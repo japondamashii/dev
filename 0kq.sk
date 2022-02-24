@@ -1,1 +1,2 @@
-ok
+on Chat:
+  send "test message" to player
