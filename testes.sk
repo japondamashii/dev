@@ -1,0 +1,56 @@
+import:
+    org.bukkit.event.player.PlayerMoveEvent
+on PlayerMoveEvent:
+    set {_player} to event.getPlayer()
+    if {step.%{_player}%} is true:
+        set {_p} to event.getPlayer().getLocation()
+        set {_a} to {_p}
+        set {_i} to {_p}
+        set {_number} to 1.5
+        set x-loc of {_a} to x-loc of {_a} - {_number}
+        set z-loc of {_a} to z-loc of {_a} - {_number}
+        set y-loc of {_a} to y-loc of {_a} - {_number}
+        set x-loc of {_i} to x-loc of {_i} + {_number}
+        set z-loc of {_i} to z-loc of {_i} + {_number}
+        set y-loc of {_i} to y-loc of {_i} + {_number}
+        loop all blocks within {_a} and {_i}:
+            if loop-block.getType().isOccluding():
+                y-loc of loop-block is y-loc of event.getPlayer()+0.5
+                set {_u1} to block 1 meter above the loop-block
+                set {_u2} to block 2 meter above the loop-block
+                if {_u1}.getType().isOccluding() and {_u2}.getType().isOccluding() are false:
+                    set {_tele} to location 2.48 meter down location of loop-block
+                    set {_tele1} to {_tele}
+                    set {_tele2} to {_tele}
+                    set {_tele3} to {_tele}
+                    set {_tele4} to {_tele}
+                    set {_number2} to 0.005
+                    set x-loc of {_tele1} to x-loc of {_tele1} + {_number2}
+                    set z-loc of {_tele1} to z-loc of {_tele1} + {_number2}
+                    set x-loc of {_tele2} to x-loc of {_tele2} - {_number2}
+                    set z-loc of {_tele2} to z-loc of {_tele2} - {_number2}
+                    set x-loc of {_tele3} to x-loc of {_tele3} + {_number2}
+                    set z-loc of {_tele3} to z-loc of {_tele3} - {_number2}
+                    set x-loc of {_tele4} to x-loc of {_tele4} - {_number2}
+                    set z-loc of {_tele4} to z-loc of {_tele4} + {_number2}
+                    loop 4 times:                    
+                        spawn armor stand at {_tele%loop-value-2%} with nbt "{NoGravity:1b,Silent:1b,Invulnerable:1b,ShowArms:0b,Invisible:1b,NoBasePlate:1b}"
+                        set {_vehicle} to last spawned entity
+                        spawn shulker at {_tele%loop-value-2%} with nbt "{NoGravity:0b,Silent:1b,Invulnerable:1b,NoAI:1b,AttachFace:0b,ActiveEffects:[{Id:14b,Amplifier:255b,Duration:2000000,ShowParticles:0b}]}"
+                        set {_ride} to last spawned entity
+                        make {_ride} ride {_vehicle}
+                        add {_vehicle} to {_n::*}
+                        add {_ride} to {_n::*}
+        wait 1 second
+        loop {_n::*}:
+            kill loop-value
+
+command /step:
+    trigger:
+        set {_player} to player
+        if {step.%{_player}%} is true:
+            set {step.%{_player}%} to false
+            message "自動段差補正機能を無効にしました。" to {_player}
+        else:
+            set {step.%{_player}%} to true
+            message "自動段差補正機能を有効にしました。" to {_player}

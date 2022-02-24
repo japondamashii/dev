@@ -1,0 +1,7 @@
+on leftclick holding bow:
+ if {cooltime.%player%} is 0:
+  shoot an arrow
+  push the player upwards at speed 0.7
+  push the player backwards at force 1
+  cooltime(player,5)
+  stop

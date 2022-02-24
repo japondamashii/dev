@@ -1,0 +1,9 @@
+command /hat:
+    permission:skript.admin
+    trigger:
+        set helmet of player to tool of player
+on right click with player head:
+    set helmet of player to tool of player
+    clear tool of player
+
+        

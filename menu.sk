@@ -1,0 +1,19 @@
+on rightclick holding sunflower:
+ open chest inventory with 1 row named "meinmenu" to player
+ set slot 0 of player's current inventory to Bottle o' Enchanting named "level %{level.%player%}%" with lore "next level %{EXP.%player%}%"
+ set slot 1 of player's current inventory to Diamond Sword named "status" with lore "HP%{HP.%player%}%" and "MP%{MP.%player%}% MP%{MPs.%player%}%/5秒"
+ set slot 2 of player's current inventory to Golden Sword named "sukiru%{sukiru.%player%}%" with lore "セット中 %{sukiru.%player%::*}%"
+ 
+
+on inventory click:
+ name of event-inventory is "meinmenu"
+ cancel event
+ if event-item is Golden Sword:
+  open chest inventory with 5 row named "sukirulist" to player
+on inventory click:
+ if event-item is sunflower:
+  cancel event
+  open chest inventory with 1 row named "meinmenu" to player
+  set slot 0 of player's current inventory to Bottle o' Enchanting named "level %{level.%player%}%" with lore "next level %{EXP.%player%}%"
+  set slot 1 of player's current inventory to Diamond Sword named "status" with lore "HP%{HP.%player%}%" and "MP%{MP.%player%}% MP%{MPs.%player%}%/5秒"
+  set slot 2 of player's current inventory to Golden Sword named "sukiru%{sukiru.%player%}%" with lore "セット中 %{sukiru.%player%::*}%"

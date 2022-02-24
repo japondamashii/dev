@@ -1,0 +1,8 @@
+command /flightspeed [<number>]:
+    permission:skript.admin
+    trigger:
+        if arg-1 is set:
+            set {_flightspeed} to arg-1
+            set flight speed of player to {_flightspeed}
+        else:
+            message "&1&l現在あなたの飛行速度値は&6&l%flight speed of player%&1&lです" to player

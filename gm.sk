@@ -1,0 +1,26 @@
+command /gm <text> [<player>]:
+	permission:skript.admin
+	trigger:
+		if arg-2 is set:
+			if arg-2 is not player:
+				set {_p} to arg-2
+		if arg-1 is "survival" or "s" or "0":
+			if {_p} is not set:
+				set player's gamemode to survival
+			else:
+				set {_p}'s gamemode to survival
+		if arg-1 is "creative" or "c" or "1":
+			if {_p} is not set:
+				set player's gamemode to creative
+			else:
+				set {_p}'s gamemode to creative
+		if arg-1 is "adventure" or "a" or "2":
+			if {_p} is not set:
+				set player's gamemode to adventure
+			else:
+				set {_p}'s gamemode to adventure
+		if arg-1 is "spectator" or "sp" or "3":
+			if {_p} is not set:
+				set player's gamemode to spectator
+			else:
+				set {_p}'s gamemode to spectator

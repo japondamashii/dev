@@ -1,0 +1,2 @@
+on join:
+    set join message to "こんにちは%player%さん!"

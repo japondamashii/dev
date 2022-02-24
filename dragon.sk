@@ -1,0 +1,32 @@
+command /dragon:
+    permission:skript.admin
+    trigger:
+        apply invisibility without particles to player for 999 days
+        if {dragonuser.%player%} is true:
+            set {dragonuser.%player%} to false
+            delete helmet of player
+            message "false" to player
+        else:
+            set {dragonuser.%player%} to true
+            set helmet of player to ender dragon skull
+            message "true" to player
+        while {dragonuser.%player%} is true:
+            set {_nowloc} to location of player
+            set pitch of {_nowloc} to 0
+            set yaw of {_nowloc} to 0 
+            if {_nowloc} is not {_prevloc}:
+                set {_prevloc} to location of player
+                set pitch of {_prevloc} to 0
+                set yaw of {_prevloc} to 0
+                spawn armor stand at location 0.5 meter backwards player
+                add "{NoGravity:1b,Marker:1b,Invisible:1b,ArmorItems:[{},{},{},{id:""minecraft:coal_block"",Count:1b}]}" to nbt of last spawned entity
+                add 1 to {_num}
+                set {_dragons.%{_num}%} to last spawned entity
+                if {_num} is bigger than 60:
+                    add 1 to {_killnum}
+                    kill {_dragons.%{_killnum}%}
+            wait 1 ticks
+        loop {_num} - {_killnum} +1 times:
+            kill {_dragons.%{_killnum}%}
+            add 1 to {_killnum}
+        remove invisibility from player

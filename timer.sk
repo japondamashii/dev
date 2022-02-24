@@ -1,0 +1,13 @@
+function cooltime(p:player, n:number):
+ set {cooltime.%{_p}%} to 1
+ loop {_n} times:
+  wait 1 seconds
+  send action bar "クールタイム%{_n}%秒" to {_p}
+  remove 1 from {_n}
+  if {_n} is 0:
+   wait 1 seconds
+   send action bar "スキル使用可" to {_p}
+   set {cooltime.%{_p}%} to 0
+command /cooltime:
+ trigger:
+  set {cooltime.%player%} to 0

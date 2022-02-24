@@ -1,0 +1,7 @@
+command /skull [<player>] [<offline player>]:
+    permission:skript.admin
+    trigger:
+        if arg 2 is not set:
+            give arg-1's skull to player
+        if arg 1 is not set:
+            give arg-2's skull to player

@@ -1,0 +1,2 @@
+on rightclick holding a blaze rod
+ send "ブレイズロッドを持って、右クリックした。" to player

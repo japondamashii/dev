@@ -1,0 +1,17 @@
+command /save [<text>]:
+    trigger:
+        if arg-1 is set:
+            if arg-1 is "set":
+                set {save.%player%} to location of player
+                send "&aセーブポイントを通過しました！"
+            else if arg-1 is "tp":
+                if {save.%player%}  is set:
+                    teleport player to {save.%player%}
+                    send "&aテレポートしました！"
+                else:
+                    send "&cセーブポイントが見つかりません"
+            else if arg-1 is "clear":
+                clear {save.%player%}
+                send "&cセーブポイントを削除しました"
+        else:
+            send "&e/save &6(set | tp | clear)"

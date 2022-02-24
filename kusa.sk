@@ -1,0 +1,7 @@
+on right click with stick:
+    if name of held item is "kusa":
+        set {_a} to location of clicked block
+        if clicked block is any leaves:
+            set y-loc of {_a} to y-loc of {_a} + 1
+            if the block at {_a} is air:
+                set the block at {_a} to short grass

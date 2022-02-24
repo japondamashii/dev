@@ -1,0 +1,11 @@
+options:
+    top-prefix: &b&l(&r%player%&b&l)
+
+    message-color: &7
+
+    display-time: 5 # in seconds
+
+    height: 4 # blocks
+
+on chat:
+    bind hologram "{@top-prefix};{@message-color}%message%" to player for {@display-time} seconds offset by 0.0, {@height}.0, 0.0
