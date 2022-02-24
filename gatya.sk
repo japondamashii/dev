@@ -1,0 +1,11 @@
+on rightclick:
+ name of event-item is gold_nugget
+ remove 1 of event-item from player's inventory
+ chance of 0.1%:
+  send "ssr"
+ chance of 1%:
+  send "sr"
+ chance of 8%:
+  send "r"
+ else:
+  send "その他"
