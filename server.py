@@ -21,7 +21,7 @@ class hooks:
         try:
             if data["repository"]["html_url"] == "https://github.com/ErmdeirRPG/dev" and data["ref"] == "refs/heads/master":
                 print(f"[{datime_log}] New commit")
-                subprocess.Popen(["git","pull"],shell=True)
+                subprocess.Popen(["git","pull"])
         except Exception as e:
             print(e)
         #with open(f"./log/{datime}.json","a") as f:
