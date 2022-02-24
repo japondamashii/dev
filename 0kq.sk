@@ -1,2 +1,3 @@
-on Chat:
-  send "test message" to player
+on rightclick holding a blaze rod:
+  send "&aclicktest!" to player
+
